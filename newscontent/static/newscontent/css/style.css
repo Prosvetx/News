@@ -1,0 +1,534 @@
+body {
+    background: url("../images/bg11.jpg");
+
+}
+
+
+a {
+    text-decoration: none;
+}
+.scale {
+    transition: 1s; /* Время эффекта */
+   }
+.scale:hover {
+    transform: scale(1.2)
+}
+
+
+
+.textfield {
+    border: 5px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    min-height: 50%;
+    width: 60%;
+    max-width: 70%;
+    position: relative;
+    left:370px;
+    top:-240px;
+    margin:-120px 0 0 0;
+    color: white;
+    padding:10px;
+    -webkit-box-shadow: 11px 14px 12px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 11px 14px 12px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 11px 14px 12px -2px black;
+    word-wrap: break-word;
+    background: lightblue;
+    background: linear-gradient(45deg, lightgray, cornflowerblue);
+
+
+}
+
+.maintext {
+    text-align: left;
+    font-family: 'Varela Round';
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
+
+}
+
+
+/*Menu8*/
+
+.menu a:hover {
+    background-color: darkblue;
+}
+
+.menu_color > ul > li + li > a {
+    border-top: 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Убираем маркеры и отступы */
+.my_menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.my_menu li {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Общие правила для пунктов меню */
+.my_menu li a {
+    display: block;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+/*Наведение на активный пункт меню - курсор обычный */
+.my_menu li.active > a:hover {
+    cursor: default;
+}
+
+/* === Цветовое оформление menu_color === */
+.menu_color {
+    background: #555;
+    width: 100%;
+    border: 3px outset #1C6EA4;
+    text-align: center;
+    font-family: 'Varela Round';
+    box-shadow: 10px 10px 8px black;
+    position: relative;
+
+
+}
+
+/* Оформление пункта */
+.menu_color > ul > li > a {
+    color: lightgray;
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Подсветка пункта при наведении */
+.menu_color > ul > li > a:hover {
+    color: white;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Активный пункт */
+.menu_color > ul > li.active > a,
+.menu_color > ul > li.active > a:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.textmenu {
+    text-align: center;
+    color: antiquewhite;
+    text-shadow: 2px 2px black;
+    margin-bottom: 5px;
+}
+
+#weather {
+    color: white;
+    position: relative;
+    top:-435px;
+    left: 20px;
+    font-family: 'Varela Round';
+
+}
+
+.menustyle {
+    position: relative;
+    width: 250px;
+    margin-right: 20px;
+    left:45px;
+    top:-170px;
+
+
+}
+.newicon a {
+    color: black;
+    text-decoration: none;
+}
+
+.newicon {
+    font-family: 'Varela Round', 'Noto Sans';
+    width: 200px;
+    border: outset #1C6EA4;
+    border-radius: 5%;
+    position: relative;
+    margin: 10px;
+    height: 300px;
+    color: black;
+    float: left;
+    display: inline-block;
+    padding: 5px;
+    background: lightblue;
+    background: linear-gradient(to bottom, white, cornflowerblue);
+
+}
+.newdatetable {
+    word-wrap: break-word;
+    position: absolute;
+    right:1%;
+    top:94%;
+    font-size:14px;
+    color:black;
+
+}
+
+.newdatemaintext {
+    font-family:'Varela Round';
+    font-size:14px;
+    word-wrap: break-word;
+    text-align: right;
+    color:black;
+    padding: 10px;
+
+}
+.newdetailimage {
+    transition: 1s; /* Время эффекта */
+    width:400px;
+    height:300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.newdetailimage:hover {
+    transform: scale(1.7)
+}
+
+
+.newstable {
+    position: relative;
+    left: 300px;
+    top: -200px;
+    margin-top: -170px;
+    margin-left: 5%;
+    margin-right: 0;
+    padding: 0;
+    width: auto;
+    max-width: 70%;
+    height: 900px;
+    text-align: center;
+
+}
+
+.maintexttitle {
+    text-align: center;
+    font-family: 'Varela Round';
+
+
+}
+
+
+.newicontitle {
+    text-align: center;
+    word-wrap: break-word;
+
+}
+
+.newicontext {
+    word-wrap: break-word;
+
+}
+
+.newstableimage img {
+    width: 180px;
+    height: 130px;
+    border:outset 2px #1C6EA4;
+    border-radius: 5px;
+    margin-top:5px;
+    margin-bottom:5px;
+
+}
+
+.totalsectioncard {
+    margin-left:3%;
+    position: relative;
+    width: 80%;
+    height: auto;
+    top:-350px;
+    left:360px;
+
+
+}
+.sectionmainimg {
+    position: absolute;
+    margin:5px;
+}
+
+
+
+#sectionimg {
+    border-radius: 15px;
+    width: 490px;
+    height: 310px;
+}
+
+.section_card {
+    position: relative;
+    border-radius: 5%;
+    width: 500px;
+    height: 350px;
+    margin: 25px 25px 25px auto;
+    border: 3px white solid;
+    display: inline-block;
+    background: lightblue;
+    background: linear-gradient(to bottom, white, cornflowerblue);
+
+
+}
+
+.sectiontitle a {
+    position: absolute;
+    color: white;
+    width: 150px;
+    top:90%;
+    left:175px;
+    right:175px;
+    text-align: center;
+
+}
+
+
+
+.createnewsform {
+    position: relative;
+    top: -450px;
+    left: 450px;
+    margin: 20px;
+    width: 50%;
+
+    padding: 20px;
+    text-align: center;
+
+
+}
+
+.createtitlelabel {
+    color: red;
+
+}
+
+.createtitlefield input {
+    width: 350px;
+    height: 25px;
+    border: 5px solid white;
+    border-radius: 5px;
+
+    background: antiquewhite;
+
+}
+
+.createtextlabel {
+    color: wheat;
+
+
+}
+
+.createtextfield textarea {
+    border: 5px white solid;
+    border-radius: 5px;
+    min-height: 650px;
+    width: 90%;
+    background: lightblue;
+    background: linear-gradient(to bottom, white, cornflowerblue);
+}
+.createsectionlabel {
+    color: cornflowerblue;
+}
+.createnewsform input {
+    color: black;
+
+}
+.createsectionfield select {
+    width: 150px;
+    height: 30px;
+    margin:10px;
+    background: antiquewhite;
+}
+
+.create_new {
+    display: table;
+    position:fixed;
+    top:90%;
+    left:5%;
+    width: 140px;
+    height: 50px;
+    border: outset 3px cornflowerblue;
+    text-align: center;
+    background: black;
+
+}
+.create_new a {
+    color: antiquewhite;
+    font-family: 'Varela Round';
+
+    display: table-cell;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+
+
+/*slider*/
+
+.slidercontainer {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    margin-bottom: 50px;
+
+}
+.container_slider_css{
+    width:101%;
+    height:420px;
+    top: -8px;
+    left:-8px;
+    overflow:hidden;
+    position:absolute;
+    border-bottom: 2px white solid;
+
+}
+
+
+.photo_slider_css{
+    position:absolute;
+    animation:round 16s infinite;
+    opacity:0;
+    width:100%;
+
+
+}
+
+@keyframes round {
+25%{opacity:1}
+40%{opacity:0}
+}
+img:nth-child(1){animation-delay:12s}
+img:nth-child(2){animation-delay:8s}
+img:nth-child(3){animation-delay:4s}
+img:nth-child(4){animation-delay:0s;}
+@media(min-width:0px) and (max-width:320px) {
+.container_slider_css{width:80%;height:190px}
+}
+@media(min-width:321px) and (max-width:480px) {
+.container_slider_css{width:80%;height:190px}
+}
+
+.mainvalute {
+    color:white;
+    font-family: 'Varela Round';
+    position: relative;
+    top:-435px;
+    left: 20px;
+
+}
+
+.sortnews {
+    position: relative;
+    top:-400px;
+    left:420px;
+    width: 400px;
+    display: flex;
+    flex-flow:row wrap;
+    align-items: center;
+}
+
+.sortnews form label {
+    text-align: center;
+    color:white;
+    font-family: 'Varela Round';
+
+}
+
+.sortnews form select {
+    text-align: center;
+    font-family: 'Varela Round';
+
+}
+.sortnews form select option {
+    font-family: 'Varela Round';
+
+    text-align: center;
+}
+.sortnews input {
+    background: white;
+    font-family: 'Varela Round';
+
+}
+
+.newrating {
+
+    width: 150px;
+    height: 25px;
+    position: relative;
+    text-align: center;
+    top:-69px;
+}
+
+.newlikebtn {
+    position: absolute;
+    top:0px;
+    left:12px;
+}
+
+.newlikebtn input {
+    position: absolute;
+    left:72px;
+    bottom: -119px;
+    width: 22px;
+    height: 22px;
+}
+
+.newdislike img {
+    position: absolute;
+    left:125px;
+    bottom: -124px;
+    width: 22px;
+    height: 22px;
+    transform: rotate(180deg);
+}
+
+
+.likenumb {
+    position: absolute;
+    left:100px;
+    bottom: -120px;
+    font-family: 'Varela Round';
+    font-size:14px;
+
+}
+
+
+
+.li {
+    border: none;
+    outline:none;
+}
+
+#lk {
+    border: none;
+    outline: none;
+}
+
+#bk {
+    border: none;
+    outline: none;
+}
+
+#scale {
+    transition: 1s; /* Время эффекта */
+   }
+#scale:hover {
+    position:relative;
+    transform: scale(2);
+    z-index:5
+
+}
+
