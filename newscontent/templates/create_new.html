@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="createnewsform">
+        <form method="post">{% csrf_token %}
+            {% for f in form %}
+                <p>
+                <div class="create{{ f.label|lower }}label">
+                    {{ f.label }}
+                </div>
+                <p>
+                <div class="create{{ f.label|lower }}field">
+                    {{ f }}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}

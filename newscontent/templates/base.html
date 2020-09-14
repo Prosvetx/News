@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'newscontent/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'newscontent/css/fonts.css' %}">
+
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'newscontent/images/favicon.ico' %}"/>
+</head>
+<body>
+<div class="slidercontainer">
+<div class="container_slider_css">
+  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/1.png' %}" alt="">
+  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/2.png' %}" alt="">
+  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/3.png' %}" alt="">
+  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/4.png' %}" alt="">
+</div>
+</div>
+{% block weather %}
+    <div id="weather">
+        {{ city }}
+        <br>
+        {{ temp }}°C
+    </div>
+{% endblock %}
+
+{% block rates %}
+    <div class="mainvalute">
+
+        <p>USD {{ valute.USD }}</p>
+        <p>EUR {{ valute.EUR }}</p>
+        <p>CNY {{ valute.CNY }}</p>
+
+    </div>
+{% endblock %}
+{% block menu %}
+    <div class="menustyle">
+        <h2 class="textmenu">Menu</h2>
+
+        <nav class="menu_color">
+            <ul class="my_menu">
+            <li><a href="{% url 'main_page' %}">HOMEPAGE</a></li>
+                {% for section in sections %}
+                    <li><a href="{{ section.get_absolute_url }}">{{ section.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'newscontent/js/main.js' %}"></script>
+
+
+</body>
+</html>
