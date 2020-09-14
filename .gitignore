@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-news/.idea/
+
 # Distribution / packaging
 .Python
 env/
@@ -75,7 +75,7 @@ target/
 
 # celery beat schedule file
 celerybeat-schedule
-
+celerybeat-schedule.db
 # SageMath parsed files
 *.sage.py
 
@@ -103,6 +103,8 @@ ENV/
 .DS_Store
 *.sqlite3
 media/
+.idea/
+.idea
 *.pyc
 *.db
 *.pid
@@ -113,3 +115,4 @@ media/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
+
