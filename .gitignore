@@ -105,6 +105,7 @@ ENV/
 media/
 .idea/
 .idea
+*.idea
 *.pyc
 *.db
 *.pid
