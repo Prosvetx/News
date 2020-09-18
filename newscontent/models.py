@@ -35,7 +35,7 @@ class New(models.Model):
     picture3 = models.ImageField(upload_to=new_image_directory, blank=True, null=True)
 
     def __str__(self):
-        return str(self.title)
+        return self.title
 
     def get_absolute_url(self):
         return reverse('new_detail', kwargs={"pk": self.id, "title": self.section})
@@ -43,3 +43,13 @@ class New(models.Model):
     def save(self, *args, **kwargs):
         redact_directory(self)
         super().save()
+
+
+class Rate(models.Model):
+    valute_name = models.CharField(max_length=30, blank=True, null=True)
+    valute = models.CharField(max_length=10, unique=True)
+    value_rur = models.FloatField(max_length=7, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.valute

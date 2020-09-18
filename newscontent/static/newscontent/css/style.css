@@ -386,13 +386,15 @@ a {
 
 }
 .container_slider_css{
-    width:101%;
-    height:420px;
-    top: -8px;
-    left:-8px;
+    width:1400px;
+    height:430px;
+    margin:auto;
+    top: -7px;
+    left:235px;
     overflow:hidden;
     position:absolute;
-    border-bottom: 2px white solid;
+
+    border: 2px 2px 0px 2px white solid;
 
 }
 

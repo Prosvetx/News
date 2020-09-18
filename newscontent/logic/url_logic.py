@@ -16,8 +16,6 @@ data_weather = str(BASE_DIR) + '/newscontent/logic/api/data_files/data_weather.j
 
 class ContextAbstract:
 
-
-
     @staticmethod
     def update_context():
         with open(data_rates, 'r') as file:
@@ -30,6 +28,7 @@ class ContextAbstract:
             abs_context = {"city": city, "temp": temp, "valute": valute}
 
         return abs_context
+
 
 class MainView(View, ContextAbstract):
     def get(self, request):
@@ -50,10 +49,12 @@ class NewList(ListView, ContextAbstract):
     template_name = 'section_list.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if request.user.is_authenticated:
             return likes_control_ajax(self, request)
         else:
-            return super().get(request)
+            super().get(request, *args, **kwargs)
+    # else:
+    #    return super().get(request)
 
     def check_sort_field(self):
         if 'sort_field' in self.request.POST.keys():
