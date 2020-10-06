@@ -2,8 +2,7 @@ import asyncio
 import json
 
 import requests
-from celery import shared_task
-
+from news.celery import app
 from news.settings import BASE_DIR
 from .logic.api.data_apis import start, cities, weather_token
 from .models import Rate
@@ -12,7 +11,7 @@ data_rates = str(BASE_DIR) + '/newscontent/logic/api/data_files/data_rates.json'
 data_weather = str(BASE_DIR) + '/newscontent/logic/api/data_files/data_weather.json'
 
 
-@shared_task
+@app.task
 def api_rates():
     """Получение данных о погоде, валюте с помощью OWM API и SBERBANK API в асинхронном потоке"""
     valutes = ['USD', 'EUR', 'CNY']
@@ -25,7 +24,7 @@ def api_rates():
         print('Rates updated')
 
 
-@shared_task
+@app.task
 def api_weather():
     """Создание async loop с формированием списка корутин, получение результата
     Фильтр сырых json's (result) с последующим созданием/перезаписыванием json с чистыми данными"""
@@ -44,7 +43,7 @@ def api_weather():
     print('Weather updated')
 
 
-@shared_task
+@app.task(autostart=False)
 def update_rates():
     url_sberbank = 'https://www.cbr-xml-daily.ru/daily_json.js'
     res = requests.get(url_sberbank)
@@ -56,6 +55,7 @@ def update_rates():
                                                                    'valute_name': data[valute]['Name']})
     else:
         print('update_rates / failed')
-# celery -A news worker -B
+    print('rates updated!')
 
+# celery -A news worker -B
 # celery -A news beat

@@ -26,18 +26,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+BASE_HOST = 'localhost:8000'
+
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'newscontent',
     'django_cleanup',  # last only
+    'django.contrib.postgres',
 
 ]
 
@@ -56,20 +61,24 @@ ROOT_URLCONF = 'news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': []
         ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
 
             ],
         },
     },
 ]
+
+#LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 WSGI_APPLICATION = 'news.wsgi.application'
 
@@ -78,10 +87,16 @@ WSGI_APPLICATION = 'news.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'news',
+        'USER': 'news',
+        'PASSWORD': '1234',
     }
 }
+
+SITE_ID = 1
+
+# Provider specific settings
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -117,7 +132,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-
 STATIC_URL = '/static/'
 STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]
 
@@ -132,3 +146,10 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+# Email services
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pvlasovp1@gmail.com'
+EMAIL_HOST_PASSWORD = '****'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

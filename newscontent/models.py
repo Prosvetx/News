@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .services import section_image_directory, new_image_directory, redact_directory
 
 
+
 class Section(models.Model):
     """Модель разделов новостей"""
     title = models.CharField(max_length=25, unique=True)
@@ -15,7 +16,7 @@ class Section(models.Model):
         return str(self.title)
 
     def get_absolute_url(self):
-        return reverse('section_list', kwargs={'section_title': self.title})
+        return reverse('news_list', kwargs={'section_title': self.title})
 
     def get_absolute_create_url(self):
         return reverse('create_new', kwargs={'title': self.title})
@@ -43,10 +44,12 @@ class New(models.Model):
     def save(self, *args, **kwargs):
         redact_directory(self)
         super().save()
-
+    
+    class Meta:
+        ordering = ('title',)
 
 class Rate(models.Model):
-    valute_name = models.CharField(max_length=30, blank=True, null=True)
+    valute_name = models.CharField(max_length=50, blank=True, null=True)
     valute = models.CharField(max_length=10, unique=True)
     value_rur = models.FloatField(max_length=7, blank=True, null=True)
 

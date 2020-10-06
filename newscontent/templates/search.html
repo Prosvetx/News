@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<div class="search_form">
+<h2>What do you want to find ?</h2>
+<form action='.' method="GET">
+{%csrf_token%}
+{% for f in form %}
+<h3>{{f.label|capfirst}}</h3>
+<p>{{f}}</p>
+{%endfor%}
+ <input type="submit" value="Search">
+</form>
+{%if answer%}
+<div class="search_result">
+    <h2>'{{look_for}}' found {{cnt}} time{{ cnt|pluralize:"'s" }}</h2>
+{%for post in answer%}
+<h3><a href={{post.get_absolute_url}}>{{post.title}}</a></h3>
+<h3>{{post.text}}</h3>
+    <hr>
+{%endfor%}
+</div>
+{%elif nope%}
+<div class="search_result">
+<h3>
+    <p>{{nope}}</p>
+</h3>
+{%else%}
+
+
+
+</div>
+{%endif%}
+</div>
+{% endblock %}

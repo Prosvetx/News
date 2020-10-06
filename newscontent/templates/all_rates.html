@@ -1,0 +1,54 @@
+{% extends 'main_page.html' %}
+{% block content %}
+
+    <div class="main_allrates">
+        <div class="allrates">
+            <table border="1" cellpadding="10" style="border:white">
+                {% for rate in rates|slice:10 %}
+                    <tr>
+                        <th id="rateth1">{{ rate.valute_name }}</th>
+                        <th id="rateth2">{{ rate.valute }}</th>
+                        <th id="rateth3">{{ rate.value_rur }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="allrates">
+            <table border="1" cellpadding="10" style="border:white">
+                {% for rate in rates|slice:"10:20" %}
+                    <tr>
+                        <th id="rateth1">{{ rate.valute_name }}</th>
+                        <th id="rateth2">{{ rate.valute }}</th>
+                        <th id="rateth3">{{ rate.value_rur }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+        <div class="allrates">
+            <table border="1" cellpadding="10" style="border:white">
+                {% for rate in rates|slice:"20:30" %}
+                    <tr>
+                        <th id="rateth1">{{ rate.valute_name }}</th>
+                        <th id="rateth2">{{ rate.valute }}</th>
+                        <th id="rateth3">{{ rate.value_rur }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="allrates">
+            <table border="1" cellpadding="10" style="border:white">
+                {% for rate in rates|slice:"30:" %}
+                    <tr>
+                        <th id="rateth1">{{ rate.valute_name }}</th>
+                        <th id="rateth2">{{ rate.valute }}</th>
+                        <th id="rateth3">{{ rate.value_rur }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load news_tags %}
 {% block content %}
-    <div class="sortnews">
-        <form action="{% url 'section_list' current_section %}" method="POST">
-            {% csrf_token %}
-            <div class="lbl"></div>
-            <label for="sort_field">Sort by:</label>
-            <select name="sort_field" id="sort_field">
-                <option value="-date">Date</option>
-                <option value="title">Name</option>
-                <option value="-like">Rating</option>
-            </select>
-            <input type="submit" value="Do it!">
-        </form>
-    </div>
+    
 
     <div class="newstable">
-        {% for new in news_list %}
 
-                <div class="newicon" style="{% if news_list|length < 4 %}float:none;{% endif %}">
+        <div class="sortnews">
+            <form action="{% url 'news_list' current_section %}" method="GET">
+                {% csrf_token %}
+                <div class="lbl"></div>
+                <label for="sort_field">Sort by:</label>
+                <select name="sort_field" id="sort_field">
+                    <option value="-date">Date</option>
+                    <option value="title">Name</option>
+                    <option value="-like">Rating</option>
+                </select>
+                <input type="submit" value="Do it!">
+            </form>
+        </div>
+
+        {% for new in page_obj %}
+                <div class="newicon" >
                 <a href="{{ new.get_absolute_url }}">
                     <div class="newstableimage">
                         {% if new.picture %}
@@ -31,7 +34,7 @@
                         {{ new.title|truncatechars:20 }}
                     </div>
                     <div class="newicontext">
-                        <h4>{{ new.text|truncatechars:10 }}</h4>
+                        <p>{{ new.text|truncatechars:55 }}</p>
                     </div>
                     </a>
                     <div class="newrating">
@@ -48,11 +51,14 @@
                         {{ new.date }}
                     </div>
                 </div>
-
+                
 
         {% endfor %}
+        <div class="pagination_pages">
+            {% include 'pagination.html' with page=page_obj%}
+        </div>
     </div>
-
+    
     <div class="create_new">
         <a href="{{ current_section.get_absolute_create_url }}">CREATE NEW</a>
     </div>

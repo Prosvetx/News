@@ -2,16 +2,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
     <div class="totalsectioncard">
+
         {% for section in sections %}
             <div class="section_card">
                 <div class="sectionmainimg">
-                <a href="{% url 'section_list' section.title %}">
+                <a href="{% url 'news_list' section.title %}">
                     <img id="sectionimg" src="{% if section.picture %}{{ section.picture.url }}{% endif %}">
                 </a>
                 </div>
                 <div class="sectiontitle">
-                <a href="{% url 'section_list' section.title %}">{{ section.title }}</a>
+                <a href="{% url 'news_list' section.title %}">{{ section.title }}</a>
                 </div>
             </div>
 

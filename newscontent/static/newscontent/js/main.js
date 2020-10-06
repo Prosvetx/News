@@ -2,20 +2,21 @@ const get_url = function (url) {
     return url
     }
 
-const host = '127.0.0.1:8000'
-const update_url = `http://${host}/update/`;
+const host = 'localhost:8000'
+const likes_update = `http://${host}/likes_update/`
+const update_url = `http://${host}/update/`
 const valute_update = document.getElementById("values_upd")
 const like = document.getElementsByClassName("lk")
 
 //Кнопка id = 'values_upd' бновление валют
 valute_update.addEventListener("click", function () {
-if (valute_update.innerHTML != 'done'){
+if (valute_update.innerHTML != 'Done!'){
    const data = {func:'update'}
    fetch(update_url, {
        method:'POST',
        headers: {'X-CSRFToken': csrftoken},
        body:JSON.stringify(data)
-   }).then(response => valute_update.innerHTML = 'done')
+   }).then(response => valute_update.innerHTML = 'Done!')
 
   }
 });
@@ -25,7 +26,7 @@ for (var i = 0; like.length>i; i++) {
     like[i].addEventListener("click", function () {
     if (this.id=='lk') {
         var data = {id: parseInt(this.value)}
-        fetch('', {
+        fetch(likes_update, {
             method:'POST',
             headers:{'X-CSRFToken': csrftoken},
             body:JSON.stringify(data)
@@ -51,4 +52,16 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+// console.log(window.innerWidth)
+//
+// var sz = window.screen.width
+// if (window.screen.width < sz) {
+//     document.getElementById("r_block").style.display = "none"
+//
+// }
+
+
+
 const csrftoken = getCookie('csrftoken');
+

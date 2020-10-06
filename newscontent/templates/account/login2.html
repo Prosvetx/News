@@ -1,0 +1,14 @@
+<div class="login_form">
+
+ <form class="auuth" action="{{main_url}}/login/" method="POST">
+{% csrf_token %}
+{%for field in form_login %}
+<p>{{ field.label }} {{field}}</p>
+{%endfor%}
+{%if error%}
+<p style="color:red">{{error}}</p>
+{%endif%}
+ <p><input id="auth_login" type="button" value="Log in" onclick="send_data_auth()"></p>
+ </form>
+ 
+</div>

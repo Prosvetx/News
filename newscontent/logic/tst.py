@@ -7,5 +7,3 @@ with open(str(BASE_DIR) + '/newscontent/logic/api/data_files/data_weather.json',
     cities = dict(json.loads(file.read()))
     city = choice(list(cities.keys()))
     temp = cities[city]
-    # print(valute)
-    #print(rate)

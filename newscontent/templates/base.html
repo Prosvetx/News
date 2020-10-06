@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 {% load static %}
+{% load news_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}Title{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'newscontent/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'newscontent/css/fonts.css' %}">
     <link rel="shortcut icon" type="image/jpg" href="{% static 'newscontent/images/favicon.ico' %}"/>
     <script type="text/javascript" src="{% static 'newscontent/js/main.js' %}" defer ></script>
-</head>
+    </head>
 <body>
-<div class="slidercontainer">
-<div class="container_slider_css">
-  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/1.jpg' %}" alt="">
-  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/2.jpg' %}" alt="">
-  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/3.jpg' %}" alt="">
-  <img class="photo_slider_css" src="{% static 'newscontent/images/slider/4.jpg' %}" alt="">
-</div>
-</div>
+    <ul class="menu">
+        <li><a href="{{main_url}}/news/">News</a>
+            <ul class="submenu">
+                {%for section in sections%}
+                <li><a href="{{ section.get_absolute_url }}">{{section.title}}</a></li>
+               {%endfor%}
+            </ul>
+        </li>
+        <li><a href=#>Menu 2</a>
+            <ul class="submenu">
+                <li><a href=#>Sudmenu 2</a></li>
+                <li><a href=#>Sudmenu 2</a></li>
+                <li><a href=#>Sudmenu 2</a></li>
+            </ul>
+        </li>
+        <li><a href=#>Menu 3</a>
+            <ul class="submenu">
+                <li><a href=#>Sudmenu 3</a></li>
+                <li><a href=#>Sudmenu 3</a></li>
+                <li><a href=#>Sudmenu 3</a></li>
+            </ul>
+        </li>
+        <li><a href=#>Menu 4</a>
+            <ul class="submenu">
+                <li><a href=#>Sudmenu 4</a></li>
+                <li><a href=#>Sudmenu 4</a></li>
+                <li><a href=#>Sudmenu 4</a></li>
+            </ul>
+        </li>
+        <li><a href=#>Menu 5</a>
+            <ul class="submenu">
+                <li><a href=#>Sudmenu 5</a></li>
+                <li><a href=#>Sudmenu 5</a></li>
+                <li><a href=#>Sudmenu 5</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="upper">
 {% block weather %}
     <div id="weather">
         {{ city }}
@@ -27,37 +58,57 @@
 
 {% block rates %}
     <div class="mainvalute">
+        {% for rate in rates %}
+        {% if rate.valute in main_valutes %}
+        <p>{{rate.valute}}  {{rate.value_rur}}</p>
+        {% endif %}
+        {% endfor %}
+        <p><a href="{% url 'all_rates' %}">all rates</a></p>
 
-        <p>USD {{ valute.USD }}</p>
-        <p>EUR {{ valute.EUR }}</p>
-        <p>CNY {{ valute.CNY }}</p>
-        <button id="values_upd">update valutes</button>
+        <button id="values_upd">Update Rates</button>
+
     </div>
 {% endblock %}
 
-{% block menu %}
-    <div class="menustyle">
-        <h2 class="textmenu">Menu</h2>
-
-        <nav class="menu_color">
-            <ul class="my_menu">
-                <li><a href="/admin">Admin</a></li>
-            <li><a href="{% url 'main_page' %}">HOMEPAGE</a></li>
-                {% for section in sections %}
-                    <li><a href="{{ section.get_absolute_url }}">{{ section.title }}</a></li>
+<div class="auth">
+    {% if request.user.is_authenticated %}
+    <p>Hello {{ request.user.username }}!</p>
+    <p><span><a style="color:greenyellow" href="{% url 'logout' %}">Logout</a></span></p>
+    {% else %}
+    <p><a style="color:greenyellow" href="{% url 'login' %}">Log-in</a></p>
+    {% endif %}
+</div>
+{#        <div class ="search_tag"><a class="search_tag" href="{{main_url}}/search">Search</a>#}
+            <div class ="search_tag">
+            <form action="{% url 'search_page'%}" method="get">
+                {% csrf_token %}
+                {% for form in search_form %}
+                <p>Search: {{ form }}
                 {% endfor %}
-            </ul>
-        </nav>
+                <input class="search_btn" type="submit" value="Search"></p>
+            </form>
+            </div>
     </div>
-{% endblock %}
 
+    {% block right %}
+    <div id="r_block" class="right_block">
+        <div class="right_block_title ">Recently News:</div>
+    {% for new in last5 %}
+        <div class="right_block_new">
+        <a style="font-weight: 700" href="{{ new.get_absolute_url }}">{{ new.title }}</a>
+            <br>{{ new.text|truncatechars:30 }}
+        <br>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
 
 {% block content %}
 
 {% endblock %}
 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 
-
+{#{% get_most_commented_posts %}#}
 </body>
 </html>
